@@ -7,11 +7,11 @@ import java.util.List;
 /**
  *
  */
-@Service
+//@Service
 public interface UserSvc {
     List<String> findAll();
 
     String save(String username);
 
-    String saveError(String username);
+    String saveError(String username) throws Exception;
 }

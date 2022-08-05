@@ -31,7 +31,7 @@ public class UserRest {
 
 
     @GetMapping("/save-error")
-    public String saveError() {
+    public String saveError() throws Exception {
         return userSvc.saveError(System.currentTimeMillis() + "");
     }
 

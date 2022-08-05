@@ -28,8 +28,8 @@ public class BUserSvcImpl implements UserSvc {
     }
 
     @Override
-    public String saveError(String username) {
+    public String saveError(String username) throws Exception {
         String usernameNew = this.save(username);
-        throw new RuntimeException("saveError");
+        throw new Exception("saveError");
     }
 }

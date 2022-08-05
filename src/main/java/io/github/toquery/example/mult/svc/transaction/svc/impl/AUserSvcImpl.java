@@ -3,8 +3,10 @@ package io.github.toquery.example.mult.svc.transaction.svc.impl;
 import io.github.toquery.example.mult.svc.transaction.dao.AUserDao;
 import io.github.toquery.example.mult.svc.transaction.entity.UserA;
 import io.github.toquery.example.mult.svc.transaction.svc.UserSvc;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -12,6 +14,8 @@ import java.util.stream.StreamSupport;
 /**
  *
  */
+//@Service
+@Transactional(rollbackOn = Exception.class)
 public class AUserSvcImpl implements UserSvc {
 
     @Resource
@@ -28,8 +32,8 @@ public class AUserSvcImpl implements UserSvc {
     }
 
     @Override
-    public String saveError(String username) {
+    public String saveError(String username) throws Exception {
         String usernameNew = this.save(username);
-        throw new RuntimeException("saveError");
+        throw new Exception("saveError");
     }
 }
